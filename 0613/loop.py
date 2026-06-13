@@ -6,5 +6,10 @@
 # range(1,10) -> 1-9
 # range(x,y) -> x - y-1
 
-for n in range(100):
-    print(f'hello!{n}')
+# for n in range(10):
+#     print(n)
+i = 10
+for n in range(i):
+    print('*' * (n+1))
+for n in range(i):
+    print('*' * (i-n))
