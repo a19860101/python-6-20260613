@@ -17,3 +17,6 @@ match day:
         print('星期六')
     case _:
         print('錯誤')
+
+x ='123a'
+print(x.isdigit() is False)
