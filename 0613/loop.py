@@ -8,8 +8,11 @@
 
 # for n in range(10):
 #     print(n)
-i = 10
+i = 15
+# for n in range(i):
+#     print('*' * (n+1))
+# for n in range(i):
+#     print('*' * (i-n))
+
 for n in range(i):
-    print('*' * (n+1))
-for n in range(i):
-    print('*' * (i-n))
+    print(' ' * (i-n-1) + '*' * (2 * n + 1))
