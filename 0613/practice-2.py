@@ -9,7 +9,7 @@ if not ntd.isdigit():
 
 if m == '1':
     result = int(ntd) / 32
-    print(f'台幣{ntd}約為美金{result}')
+    print(f'台幣{int(ntd):,}約為美金{result:.0f}')
 elif m == '2':
     result = int(ntd) / 0.198
-    print(f'台幣{ntd}約為日幣{result}')
+    print(f'台幣{int(ntd):,}約為日幣{result:,.0f}')
