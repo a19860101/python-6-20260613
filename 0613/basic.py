@@ -24,5 +24,23 @@ print(type(f))
 # 變數名不能是任何Python 關鍵字。
 
 # 關鍵字
-import keyword
-print(keyword.kwlist)
+# import keyword
+# print(keyword.kwlist)
+
+# 型別轉換
+# int()
+# float()
+# str()
+
+
+x = '10'
+y = '26'
+# print(int(x) + int(y))
+
+s = 1024768
+s = str(s)
+print(type(s))
+
+
+# print('*' * 20)
+# print('=' * 100)
