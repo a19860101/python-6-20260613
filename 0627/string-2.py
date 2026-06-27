@@ -57,3 +57,17 @@ print(n.isalpha())
 # isalnum()
 # 判斷是否數字+文字
 print(n.isalnum())
+
+# join()
+z = ['apple','banana','mango']
+print(''.join(z))
+print('__'.join(z))
+
+# split() 分割
+print(s2.split())
+print(s2.split('o'))
+q = 'hello?test?123'
+print(q.split('?'))
+
+
+# list 列表 串列
