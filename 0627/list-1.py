@@ -19,6 +19,8 @@ print(lt1[::-1])
 # for item in range(3):
 #     print(lt1[item])
 
-for x in lt1:
-    print(x)
+# for x in lt1:
+#     print(x)
 
+for i,x in enumerate(lt1):
+    print(i,x)
