@@ -1,6 +1,6 @@
 while True:
     m = input('請選擇功能：1)台幣轉美金 2)台幣轉日幣 q)結束程式：')
-    if m == 'q':
+    if m.lower() == 'q':
         print('BYE')
         break
     if m != '1' and m != '2':
