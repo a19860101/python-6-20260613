@@ -47,4 +47,10 @@ print(fruits)
 # fruits.sort(reverse=True)
 
 # fruits.reverse()
-print(fruits)
+
+fruits_sorted = sorted(fruits, key=str.lower)
+print(fruits_sorted)
+
+# fruits_reversed = reversed(fruits)
+# for item in fruits_reversed:
+#     print(item)
