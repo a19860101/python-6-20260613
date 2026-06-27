@@ -7,9 +7,11 @@ while True:
     low=1
     high=h
     print(ans)
+    count=0
     while True:
         guess = input('請輸入數字：')
         guess = int(guess)
+        count+=1
         if guess > ans:
             high = guess
             print(f'太大啦。{low}-{high}之間')
@@ -18,9 +20,12 @@ while True:
             print(f'太小啦。{low}-{high}之間')
         else:
             print('恭喜')
+            print(f'共猜了{count}次!!')
             break
 
     again = input('要再玩一場嗎？任意鍵繼續或輸入n結束：')
+    print('=' * 50)
     if again.lower() == 'n':
         print('掰!下次見!!')
         break
+
