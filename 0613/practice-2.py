@@ -6,7 +6,6 @@ ntd = input('請輸入金額')
 if not ntd.isdigit():
     exit('請輸入正確的數字')
 
-
 if m == '1':
     result = int(ntd) / 32
     print(f'台幣{int(ntd):,}約為美金{result:.0f}')
