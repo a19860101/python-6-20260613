@@ -13,7 +13,7 @@ print(s.capitalize())
 print(s.title())
 
 # 取代 replace
-s2 = 'hello world!!'
+s2 = 'hello hello hello world!!'
 result = s2.replace('hello', '摳你機挖')
 print(result)
 
@@ -24,3 +24,23 @@ print(s2.find('x'))
 print(s2.find('hello'))
 print(s2.find('world'))
 print(s2.find('qqq'))
+
+# startswith()
+# 判斷開頭是否包含文字
+print(s2.startswith('hello'))
+print(s2.startswith('Hello'))
+
+# endswith()
+# 判斷結尾是否包含文字
+print(s2.endswith('world'))
+
+# count()
+# 計算文字數量
+print(s2.count('o'))
+print(s2.count('hello'))
+
+# len()
+# 計算文字長度
+s3 = '哈囉'
+print(len(s2))
+print(len(s3))
