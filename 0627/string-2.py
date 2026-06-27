@@ -26,12 +26,12 @@ print(s2.find('world'))
 print(s2.find('qqq'))
 
 # startswith()
-# 判斷開頭是否包含文字
+# 判斷開頭是否包含特定文字
 print(s2.startswith('hello'))
 print(s2.startswith('Hello'))
 
 # endswith()
-# 判斷結尾是否包含文字
+# 判斷結尾是否包含特定文字
 print(s2.endswith('world'))
 
 # count()
@@ -44,3 +44,16 @@ print(s2.count('hello'))
 s3 = '哈囉'
 print(len(s2))
 print(len(s3))
+
+n = '05498465219816351651651'
+# isdigit()
+# 判斷是否全數字
+print(n.isdigit())
+
+# isalpha()
+# 判斷是否全文字
+print(n.isalpha())
+
+# isalnum()
+# 判斷是否數字+文字
+print(n.isalnum())
