@@ -1,7 +1,7 @@
 import requests
 import bs4
 
-url = 'https://www.ptt.cc/bbs/WorldCup/index.html'
+url = 'https://www.ptt.cc/bbs/WorldCup/index1644.html'
 
 response = requests.get(url)
 
@@ -16,7 +16,17 @@ htmlfile = bs4.BeautifulSoup(response.text,'html.parser')
 #     print(item)
 
 # titles = htmlfile.find_all('div',{'class':'title'})
-titles = htmlfile.find_all('div',class_='title')
+# titles = htmlfile.find_all('div',class_='title')
+# print(len(titles))
+# for title in titles:
+#     if title.find('a') is None:
+#         continue
+#     print(title.find('a').text)
 
-for title in titles:
-    print(title.find('a').text)
+rent = htmlfile.find_all('div',class_='r-ent')
+for item in rent:
+    if item.find('a') is None:
+        continue
+    print(item.find('div', class_='title').find('a').text)
+    print(item.find('div', class_='author').text)
+    print('-' * 50)
