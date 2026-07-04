@@ -11,6 +11,12 @@ response = requests.get(url)
 htmlfile = bs4.BeautifulSoup(response.text,'html.parser')
 
 # print(htmlfile.find('a'))
-print(htmlfile.find_all('a'))
-for item in htmlfile.find_all('a'):
-    print(item)
+# print(htmlfile.find_all('a'))
+# for item in htmlfile.find_all('a'):
+#     print(item)
+
+# titles = htmlfile.find_all('div',{'class':'title'})
+titles = htmlfile.find_all('div',class_='title')
+
+for title in titles:
+    print(title.find('a').text)
