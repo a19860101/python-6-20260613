@@ -21,3 +21,14 @@ def account(money, tax=1.1):
 print(account(123))
 print(account(123, 2))
 print(account(tax=2.5,money=666))
+
+def qq(*price):
+    return sum(price)
+print(qq())
+print(qq(1,2,3,4,5,56,67,7))
+
+def zz(**kwargs):
+    return kwargs
+print(zz())
+print(zz(name='John',age='25'))
+
