@@ -17,17 +17,32 @@ d2['age'] = 26
 # del d2['mail']
 
 # print(d2)
-for data in d2:
-    print(data)
+# for data in d2:
+#     print(data)
+#
+# for data in d2.values():
+#     print(data)
+#
+# for data in d2.keys():
+#     print(data)
+#
+# for data in d2.items():
+#     print(data)
+#
+# for k,v in d2.items():
+#     print(k,v)
 
-for data in d2.values():
-    print(data)
+# update()
+data = {
+    'score': '95',
+    'address': 'test',
+    'name': 'John123'
+}
+d2.update(data)
+print(d2)
 
-for data in d2.keys():
-    print(data)
+print('John123' in d2.values())
+print('age' in d2.keys())
 
-for data in d2.items():
-    print(data)
 
-for k,v in d2.items():
-    print(k,v)
+print(len(d2))
