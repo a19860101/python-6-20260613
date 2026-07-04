@@ -1,7 +1,16 @@
 import requests
+import bs4
 
 url = 'https://www.ptt.cc/bbs/WorldCup/index.html'
 
 response = requests.get(url)
 
-print(response)
+# result = response.text
+# htmlfile = bs4.BeautifulSoup(result,'html.parser')
+
+htmlfile = bs4.BeautifulSoup(response.text,'html.parser')
+
+# print(htmlfile.find('a'))
+print(htmlfile.find_all('a'))
+for item in htmlfile.find_all('a'):
+    print(item)
