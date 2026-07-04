@@ -6,9 +6,28 @@ d2 = {
     'age': 25,
 }
 
-print(d2)
-print(d2['age'])
+# print(d2)
+# print(d2['age'])
 # print(d2['mail'])
 
-print(d2.get('age'))
-print(d2.get('mail'))
+# print(d2.get('age'))
+# print(d2.get('mail'))
+d2['mail'] = 'asdf@gmail.com'
+d2['age'] = 26
+# del d2['mail']
+
+# print(d2)
+for data in d2:
+    print(data)
+
+for data in d2.values():
+    print(data)
+
+for data in d2.keys():
+    print(data)
+
+for data in d2.items():
+    print(data)
+
+for k,v in d2.items():
+    print(k,v)

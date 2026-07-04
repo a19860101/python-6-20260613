@@ -1,7 +1,7 @@
 import random
 
 # q = ['apple', 'banana', 'mango', 'pineapple', 'kiwi']
-
+#
 # print(random.random())
 # print(random.randint(1,99))
 # print(random.randrange(1,10))
