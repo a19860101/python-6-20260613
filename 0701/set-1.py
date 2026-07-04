@@ -33,3 +33,11 @@ print(q2.difference(q1))
 # 對稱差集
 print(q1 ^ q2)
 print(q1.symmetric_difference(q2))
+
+day1 = {'A','B','C','D'}
+day2 = {'A','B','C'}
+day3 = {'B','C','D'}
+
+print('-' * 100)
+print(day1 & day2 & day3)
+print(day1 | day2 | day3)
