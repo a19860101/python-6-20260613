@@ -10,4 +10,14 @@ def bar():
 def dollar(a):
     return a * 32
 
-print(dollar(5))
+def greeting(name='Guest'):
+    return f'Hello, {name}!'
+
+
+def account(money, tax=1.1):
+    return money * tax
+
+# print(account(100, 1.1))
+print(account(123))
+print(account(123, 2))
+print(account(tax=2.5,money=666))
