@@ -1,8 +1,7 @@
-# 作業
-# 大樂透隨機取號
-# 49取6
 import random
 
+
+# 1
 result = []
 while True:
     ans = random.randint(1, 49)
@@ -14,4 +13,7 @@ while True:
 
 print(result)
 
-# print(random.choices(range(1,49),k=6))
+# 2
+
+result = random.sample(range(1,49), k=6)
+print(result)
