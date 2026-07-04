@@ -26,8 +26,8 @@ d2['age'] = 26
 # for data in d2.keys():
 #     print(data)
 #
-# for data in d2.items():
-#     print(data)
+for data in d2.items():
+    print(data)
 #
 # for k,v in d2.items():
 #     print(k,v)
