@@ -1,7 +1,7 @@
 import requests
 
 keyword = input('請輸入關鍵字')
-
+# application program interface
 url = f'https://www.104.com.tw/jobs/search/api/jobs?area=6001005000&jobsource=index_s&keyword={keyword}&mode=s&order=15&page=1&pagesize=30'
 
 header = {
