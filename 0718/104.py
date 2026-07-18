@@ -1,7 +1,8 @@
 import requests
-from bs4 import BeautifulSoup
 
-url = 'https://www.104.com.tw/jobs/search/api/jobs?area=6001005000&jobsource=index_s&keyword=python&mode=s&order=15&page=3&pagesize=20'
+keyword = input('請輸入關鍵字')
+
+url = f'https://www.104.com.tw/jobs/search/api/jobs?area=6001005000&jobsource=index_s&keyword={keyword}&mode=s&order=15&page=1&pagesize=30'
 
 header = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36',
