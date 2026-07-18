@@ -1,6 +1,6 @@
 import requests
 
-url = 'https://bff-house.591.com.tw/v3/web/rent/list?timestamp=1784346830976&regionid=6&firstRow=60'
+url = 'https://bff-house.591.com.tw/v3/web/rent/list?regionid=6&firstRow=0'
 
 header = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36'
