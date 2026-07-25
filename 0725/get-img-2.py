@@ -8,9 +8,15 @@ img_url = 'https://tw.portal-pokemon.com/play/resources/pokedex'
 
 response = requests.get(url)
 pokemons = response.json()
-os.makedirs('pokemons', exist_ok=True)
+os.makedirs('qqq', exist_ok=True)
+count = 0
 for pokemon in pokemons['pokemons']:
+
     name = pokemon['pokemon_name']
-    # print(f'{img_url}{pokemon["file_name"]}')
     img = f'{img_url}{pokemon["file_name"]}'
-    req.urlretrieve(img, f'pokemons/{name}.png')
+    ext = os.path.splitext(img)[1]
+    # print(f'pokemons/{name}{ext}')
+    req.urlretrieve(img, f'qqq/{name}{ext}')
+    if count == 10:
+        break
+    count = count + 1
