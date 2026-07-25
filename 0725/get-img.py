@@ -8,12 +8,8 @@ htmlfile = bs4.BeautifulSoup(response.text, 'html.parser')
 
 # print(htmlfile)
 
-imgs = htmlfile.find_all('img')
-for img in imgs:
-    # print(img)
-    try:
-        print(img['alt'])
-        print(img['src'])
-        print('-' * 100)
-    except:
-        continue
+books = htmlfile.find_all('li', class_='single-book')
+for book in books:
+    title = book.select_one('.title a').text
+    img_url = book.find('img')['src']
+    print(img_url)
