@@ -1,0 +1,1 @@
+print('hello \t\t\t\t\t world')
