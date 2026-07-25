@@ -1,0 +1,13 @@
+from selenium import webdriver
+import time
+
+driver = webdriver.Chrome()
+
+driver.get("https://www.google.com/")
+driver.save_screenshot('test.png')
+time.sleep(2)
+
+
+
+# driver.close()
+driver.quit()
