@@ -8,6 +8,8 @@ from telegram.ext import (
     ContextTypes,
     filters,
 )
+import requests
+import bs4
 
 
 #########################################
@@ -24,6 +26,16 @@ async def start_command(
     await update.message.reply_text(
         "你好，我是 RSS激起人！\n"
         "你可以傳送任何文字給我。"
+    )
+#################
+async def greeting_command(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE
+):
+    await update.message.reply_text(
+        "我是RSS激起人"
+        "就這樣!!"
+        "BYE"
     )
 
 ######################################################
@@ -60,6 +72,10 @@ def main():
     # 加入 /start指令處理器
     application.add_handler(
         CommandHandler("start", start_command)
+    )
+    # 加入 /greeting
+    application.add_handler(
+        CommandHandler("greeting", greeting_command)
     )
 
     # 加入一般文字訊息處理器
