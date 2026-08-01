@@ -10,14 +10,28 @@ from telegram.ext import (
 )
 import requests
 import bs4
-
-
 #########################################
 # 讀取.env
 load_dotenv()
 TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
-
 ############################################
+
+# 取得rss
+def get_rss():
+    url = 'https://www.twse.com.tw/rwd/zh/news/feed?type=rss'
+    response = requests.get(url)
+    soup = bs4.BeautifulSoup(response.text, 'xml')
+    items = soup.find_all('item')
+    result = []
+    for item in items:
+        title = item.find('title').text
+        content = item.find('content:encoded').text
+        result.append(title)
+        print(title)
+        print(content)
+    return result
+
+
 # 處理 /start 指令
 async def start_command(
     update: Update,
@@ -33,9 +47,8 @@ async def greeting_command(
     context: ContextTypes.DEFAULT_TYPE
 ):
     await update.message.reply_text(
-        "我是RSS激起人"
-        "就這樣!!"
-        "BYE"
+        f'{get_rss()[0]}\n{get_rss()[1]}\n{get_rss()[2]}'
+
     )
 
 ######################################################
@@ -75,7 +88,7 @@ def main():
     )
     # 加入 /greeting
     application.add_handler(
-        CommandHandler("greeting", greeting_command)
+        CommandHandler("news1", greeting_command)
     )
 
     # 加入一般文字訊息處理器
