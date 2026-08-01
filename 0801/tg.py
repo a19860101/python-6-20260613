@@ -1,6 +1,7 @@
 import os
+
 from dotenv import load_dotenv
-from telegram import Update
+from telegram import Update,Bot
 from telegram.ext import (
     ApplicationBuilder,
     CommandHandler,
@@ -26,11 +27,13 @@ def get_rss():
     for item in items:
         title = item.find('title').text
         content = item.find('content:encoded').text
-        result.append(title)
-        print(title)
-        print(content)
+        result.append({
+            'title': title,
+            'content': content
+        })
+        # print(title)
+        # print(content)
     return result
-
 
 # 處理 /start 指令
 async def start_command(
@@ -46,10 +49,13 @@ async def greeting_command(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE
 ):
-    await update.message.reply_text(
-        f'{get_rss()[0]}\n{get_rss()[1]}\n{get_rss()[2]}'
-
-    )
+    for index,news in enumerate(get_rss()):
+        await update.message.reply_text(
+            f'{news['title']}'
+            f'\n{news["content"]}'
+        )
+        if index == 10:
+            break
 
 ######################################################
 # 處理一般文字訊息
