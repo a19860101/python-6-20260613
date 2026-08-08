@@ -37,8 +37,8 @@ def get_rss():
     return result
 
 # 取得股市資料
-def get_stock():
-    data = yfinance.download('2330.TW', period='1d')
+def get_stock(code):
+    data = yfinance.download(f'{code}.TW', period='1d')
     return data
 
 # 處理 /start 指令
@@ -55,7 +55,10 @@ async def stock_command(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE
 ):
-    data = get_stock()
+    if len(context.args) == 0:
+        await update.message.reply_text('請輸入股票代碼，如 /stock 2330')
+        return
+    data = get_stock(context.args[0])
     open = data['Open']
     high = data['High']
     low = data['Low']
