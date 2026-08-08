@@ -14,9 +14,9 @@ result = yfinance.download(code, period='6mo')
 
 # print(result)
 plt.title('2330走勢圖')
-plt.plot(result.index, result['High'], label='最高價', color='red')
-plt.plot(result.index, result['Low'], label='最低價', color='green')
-plt.plot(result.index, result['Close'], label='收盤價', color='blue')
+plt.plot(result.index, result['High'], label='最高價', color='red', linewidth=1)
+plt.plot(result.index, result['Low'], label='最低價', color='green', linewidth=1)
+plt.plot(result.index, result['Close'], label='收盤價', color='blue', linewidth=1)
 
 plt.legend()
 
