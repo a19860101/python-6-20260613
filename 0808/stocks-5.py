@@ -15,4 +15,9 @@ ax[0].plot(result.index, result['Open'],color='blue')
 ax[0].plot(result.index, result['Close'],color='green')
 ax[1].bar(result.index, result['Volume'],color='red')
 
+ax[0].set_title('0050走勢圖')
+ax[1].set_title('成交量')
+
+plt.tight_layout()
+
 plt.show()
