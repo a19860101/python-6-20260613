@@ -41,6 +41,9 @@ def get_stock(code):
     data = yfinance.download(f'{code}.TW', period='1d')
     return data
 
+def get_stock_now(code):
+    data = yfinance.Ticker(f'{code}.TW')
+    return data.fast_info['lastPrice']
 # 處理 /start 指令
 async def start_command(
     update: Update,
@@ -58,19 +61,25 @@ async def stock_command(
     if len(context.args) == 0:
         await update.message.reply_text('請輸入股票代碼，如 /stock 2330')
         return
-    data = get_stock(context.args[0])
-    open = data['Open']
-    high = data['High']
-    low = data['Low']
-    close = data['Close']
-    volume = data['Volume']
-    await update.message.reply_text(
-        f'開盤價{open} \n'
-        f'收盤價{close} \n'
-        f'最高價{high} \n'
-        f'最低價{low} \n'
-        f'成交量{volume} \n'
-    )
+    if context.args[1] == 'n':
+        await update.message.reply_text(
+            f'現在股價為：{get_stock_now(context.args[0])}'
+        )
+        return
+    else:
+        data = get_stock(context.args[0])
+        open = data['Open']
+        high = data['High']
+        low = data['Low']
+        close = data['Close']
+        volume = data['Volume']
+        await update.message.reply_text(
+            f'開盤價{open} \n'
+            f'收盤價{close} \n'
+            f'最高價{high} \n'
+            f'最低價{low} \n'
+            f'成交量{volume} \n'
+        )
 
 #################
 async def greeting_command(
