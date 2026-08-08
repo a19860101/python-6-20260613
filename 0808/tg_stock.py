@@ -1,7 +1,9 @@
 import os
 import yfinance
+import mplfinance as mpl
 
 from dotenv import load_dotenv
+from matplotlib.pyplot import savefig
 from telegram import Update,Bot
 from telegram.ext import (
     ApplicationBuilder,
@@ -44,6 +46,20 @@ def get_stock(code):
 def get_stock_now(code):
     data = yfinance.Ticker(f'{code}.TW')
     return data.fast_info['lastPrice']
+
+def get_klines(code, duration):
+    data = yfinance.download(f'{code}.TW', period=duration)
+    data.columns = data.columns.get_level_values(0)
+    market_color = mpl.make_marketcolors(
+        up='red',
+        down='green',
+        inherit=True
+    )
+    style = mpl.make_mpf_style(
+        marketcolors=market_color,
+    )
+    mpl.plot(data, type='candle', style=style, volume=True, mav=5, savefig='kline.png')
+
 # 處理 /start 指令
 async def start_command(
     update: Update,
@@ -79,6 +95,23 @@ async def stock_command(
         f'最低價{low} \n'
         f'成交量{volume} \n'
     )
+
+async def kline_command(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE
+):
+
+    if len(context.args) != 2:
+        await update.message.reply_text('請輸入股票代碼，如 /stock 2330 1mo')
+        return
+    code = context.args[0]
+    duration = context.args[1]
+    get_klines(code, duration)
+    with open("kline.png", "rb") as photo:
+        await update.message.reply_photo(
+            photo=photo,
+            caption=f"{code} K線圖"
+        )
 
 #################
 async def greeting_command(
@@ -131,6 +164,9 @@ def main():
     # 加入 /stock指令處理器
     application.add_handler(
         CommandHandler("stock", stock_command)
+    )
+    application.add_handler(
+        CommandHandler("kline", kline_command)
     )
     # 加入 /greeting
     application.add_handler(
