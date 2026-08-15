@@ -1,16 +1,20 @@
 import requests
 import bs4
 
-url = 'https://www.esunbank.com/zh-tw/personal/deposit/rate/forex/foreign-exchange-rates'
+while True:
 
-response = requests.get(url)
+    c = input('請輸入貨幣代號（cny,jpy,usd）或輸入q結束：')
 
-htmlfile = bs4.BeautifulSoup(response.text, 'html.parser')
+    if c == 'q':
+        print('掰!')
+        break
 
-usd = htmlfile.select_one('.USD .CashSBoardRate').text
-cny = htmlfile.select_one('.CNY .CashSBoardRate').text
-jpy = htmlfile.select_one('.JPY .CashSBoardRate').text
+    url = 'https://www.esunbank.com/zh-tw/personal/deposit/rate/forex/foreign-exchange-rates'
 
-print(usd)
-print(cny)
-print(jpy)
+    response = requests.get(url)
+
+    htmlfile = bs4.BeautifulSoup(response.text, 'html.parser')
+
+    rate = htmlfile.select_one(f'.{c.upper()} .CashSBoardRate').text
+
+    print(rate)
