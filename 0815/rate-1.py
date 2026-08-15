@@ -1,6 +1,5 @@
 import requests
 import bs4
-from soupsieve import SelectorSyntaxError
 
 while True:
     try:
@@ -17,7 +16,6 @@ while True:
         htmlfile = bs4.BeautifulSoup(response.text, 'html.parser')
         title = htmlfile.select_one(f'.{c.upper()} .title-item:nth-of-type(2)').text.strip()
         rate = htmlfile.select_one(f'.{c.upper()} .CashSBoardRate').text
-
         if rate=='':
             print(f'{title}沒有現金匯率')
         else:
