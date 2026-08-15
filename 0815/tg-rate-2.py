@@ -10,6 +10,11 @@ load_dotenv()
 TOKEN = os.getenv('TOKEN')
 GET_UPDATES_URL = f'https://api.telegram.org/bot{TOKEN}/getUpdates'
 SEND_MESSAGES_URL = f'https://api.telegram.org/bot{TOKEN}/sendMessage'
+rss_web = {
+    'twse':'https://www.twse.com.tw/rwd/zh/news/feed?type=rss',
+    'mohw' :'https://www.mohw.gov.tw/rss-16-1.html',
+    'moi': 'https://www.moi.gov.tw/OpenData.aspx?SN=76F358C679FAD4CF'
+}
 
 update_id = 0
 
@@ -40,8 +45,8 @@ def get_weather(q):
     response = requests.get(url)
 
     data = response.json()
-    if data['cod'] == '404':
-        print(data['cod'])
+    # print(type(data['cod']))
+    if data['cod'] != 200:
         return '沒有該城市或發生錯誤'
     else:
         temp = data['main']['temp']
@@ -52,6 +57,19 @@ def get_weather(q):
         desc = data['weather'][0]['description']
 
         return f'目前氣溫:{temp}\n最高溫:{temp_max}\n最低溫:{temp_min}\n體感溫度:{feels}\n{desc}'
+
+def get_rss(url):
+    response = requests.get(url, verify=False)
+    soup = bs4.BeautifulSoup(response.text, 'xml')
+    items = soup.find_all('item')
+    rss = []
+    for item in items:
+        title = item.find('title').text
+        # title = item.title.text
+        rss.append({'title': title, 'pubDate': item.pubDate.text})
+    return rss
+
+
 while True:
     try:
         param = {
@@ -76,6 +94,16 @@ while True:
             if user_text.startswith('/weather'):
                 cmd = user_text.split()
                 user_text = get_weather(cmd[1])
+
+            if user_text.startswith('/rss'):
+                cmd = user_text.split()
+                rss_url = rss_web[cmd[1]]
+                datas = get_rss(rss_url)[:10]
+                user_text = ''
+                for data in datas:
+                    user_text += f'{data['title']}\n{data['pubDate']}\n\n'
+                    user_text += '='*30
+                    user_text += '\n'
 
             # /start
             if user_text == '/start':
