@@ -33,19 +33,25 @@ def get_rate(c):
     except SelectorSyntaxError:
         return '不可數字開頭！'
 
+
 def get_weather(q):
     url = f'https://api.openweathermap.org/data/2.5/weather?q={q}&appid=b1ecbccd638b763d489602917ba47cc3&units=metric&lang=zh_TW'
+    # metric:攝氏 imperial華氏
     response = requests.get(url)
 
     data = response.json()
-    temp = data['main']['temp']
-    temp_max = data['main']['temp_max']
-    temp_min = data['main']['temp_min']
-    feels = data['main']['feels_like']
+    if data['cod'] == '404':
+        print(data['cod'])
+        return '沒有該城市或發生錯誤'
+    else:
+        temp = data['main']['temp']
+        temp_max = data['main']['temp_max']
+        temp_min = data['main']['temp_min']
+        feels = data['main']['feels_like']
 
-    desc = data['weather'][0]['description']
+        desc = data['weather'][0]['description']
 
-    return f'目前氣溫:{temp}\n最高溫:{temp_max}\n最低溫:{temp_min}\n體感溫度:{feels}\n{desc}'
+        return f'目前氣溫:{temp}\n最高溫:{temp_max}\n最低溫:{temp_min}\n體感溫度:{feels}\n{desc}'
 while True:
     try:
         param = {
