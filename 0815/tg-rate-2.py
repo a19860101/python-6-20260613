@@ -13,9 +13,8 @@ SEND_MESSAGES_URL = f'https://api.telegram.org/bot{TOKEN}/sendMessage'
 
 update_id = 0
 
-def get_rate():
+def get_rate(c):
     try:
-        c = 'jpy'
         url = 'https://www.esunbank.com/zh-tw/personal/deposit/rate/forex/foreign-exchange-rates'
         response = requests.get(url)
         htmlfile = bs4.BeautifulSoup(response.text, 'html.parser')
@@ -47,8 +46,12 @@ while True:
             user_text = update['message']['text']
 
             #匯率
-            if user_text == '/rate':
-                user_text = get_rate()
+            # if user_text == '/rate':
+            #     user_text = get_rate()
+            if user_text.startswith('/rate'):
+                cmd = user_text.split()
+                user_text = get_rate(cmd[1])
+                print(cmd)
             # /start
             if user_text == '/start':
                 user_text = 'Hello 我是你的激起人!!!'
