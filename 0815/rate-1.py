@@ -18,7 +18,11 @@ while True:
         title = htmlfile.select_one(f'.{c.upper()} .title-item:nth-of-type(2)').text.strip()
         rate = htmlfile.select_one(f'.{c.upper()} .CashSBoardRate').text
 
-        print(f'{title}匯率為{rate}')
+        if rate=='':
+            print(f'{title}沒有現金匯率')
+        else:
+            print(f'{title}匯率為{rate}')
+
     except AttributeError:
         print('請輸入正確的貨幣代號！')
         continue
