@@ -11,18 +11,16 @@ rss_web = {
 }
 
 result = st.selectbox('請選擇要檢視的RSS', rss_web.keys())
-# count = st.selectbox('筆數',[5,10,15,20])
-count = st.text_input('請輸入筆數')
+count = st.selectbox('筆數',[5,10,15,20])
+# count = st.text_input('請輸入筆數')
 if st.button('取得'):
     response = requests.get(rss_web[result], verify=False)
     soup = bs4.BeautifulSoup(response.text, 'xml')
     items = soup.find_all('item')
-    # rss = []
     for item in items[:int(count)]:
         title = item.find('title').text
-        # title = item.title.text
-        # rss.append({'title': title, 'pubDate': item.pubDate.text})
-        # st.write(title)
-        st.markdown(f'- {title}--{item.pubDate.text}')
-        # with st.container(border=True):
-        #     st.write(title)
+
+        # st.markdown(f'- {item.pubDate.text} {title}')
+        with st.container(border=True):
+            st.write(title)
+            st.write(item.pubDate.text)
