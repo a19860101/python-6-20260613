@@ -1,8 +1,5 @@
 import streamlit as st
-
-st.title('首頁')
-st.write('hello world')
-
+st.title('test')
 # st.markdown("""
 # ## title
 #
@@ -10,8 +7,6 @@ st.write('hello world')
 # - test
 #
 # """)
-
-with open('0822/test.md', 'r', encoding='utf-8')as f:
+# st.subheader('版本控制')
+with open('0822/版本控制.md', 'r', encoding='utf-8')as f:
     st.markdown(f.read())
-
-st.title('hello')
