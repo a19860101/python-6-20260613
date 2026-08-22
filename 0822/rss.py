@@ -17,9 +17,12 @@ if st.button('取得'):
     response = requests.get(rss_web[result], verify=False)
     soup = bs4.BeautifulSoup(response.text, 'xml')
     items = soup.find_all('item')
-    rss = []
+    # rss = []
     for item in items[:int(count)]:
         title = item.find('title').text
         # title = item.title.text
-        rss.append({'title': title, 'pubDate': item.pubDate.text})
-        st.write(title)
+        # rss.append({'title': title, 'pubDate': item.pubDate.text})
+        # st.write(title)
+        st.markdown(f'- {title}--{item.pubDate.text}')
+        # with st.container(border=True):
+        #     st.write(title)
