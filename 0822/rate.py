@@ -15,5 +15,7 @@ if st.button('取得'):
     htmlfile = bs4.BeautifulSoup(response.text, 'html.parser')
     title = htmlfile.select_one(f'.{currency} .title-item:nth-of-type(2)').text.strip()
     rate = htmlfile.select_one(f'.{currency} .CashSBoardRate').text
-    st.write(rate)
+    st.success(f'{title}匯率為{rate}')
+    st.info(f'{title}匯率為{rate}')
+    st.warning(f'{title}匯率為{rate}')
 
