@@ -9,7 +9,3 @@ if st.button('取得股價'):
     data = yfinance.Ticker(f'{code}')
     # st.success(f'{code}目前股價為{data.fast_info['lastPrice']}')
     st.write(data.fast_info['lastPrice'])
-
-
-# data = yfinance.Ticker('2330.TW')
-# print(data.fast_info['lastPrice'])
